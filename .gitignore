@@ -1,0 +1,52 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+*.egg
+
+# Virtual environments
+venv/
+env/
+ENV/
+.env/
+.venv/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+.vs/
+
+# Testing
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+
+# Mypy cache
+.mypy_cache/
+
+# Documentation
+docs/_build/
+docs/api/
+site/
+
+# Mac OS
+.DS_Store
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Log files
+*.log
+logs/
