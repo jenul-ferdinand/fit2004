@@ -250,7 +250,7 @@ def quick_sort(arr: list, low: int, high: int, partition_method: str = 'naive', 
             
     # Recursive Step (sort left and right partitions)
     quick_sort(arr, low, left_high, partition_method, pivot_choice)
-    quick_sort(arr, right_low, high, partition_method, pivot_choice)
+    quick_sort(arr, right_low, high, partition_method, pivot_choice)              
     
     return arr
 
@@ -312,49 +312,7 @@ if __name__ == '__main__':
             
             print(f'Sorted using {partition.upper()} + {pivot.upper()}')
             print(f'Time taken: {elapsed:.6f} seconds. Correctly sorted: {is_correct}\n')
-    
 
-
-
-
-
-
-def naive(arr: List, low: int, high: int):
-    '''
-    Naive partitioning scheme (with QuickSort)
-    
-    https://youtu.be/f_9itSjoMVo
-    
-    Time Complexity:
-    - Best Case: O(nlogn)
-    - Average Case: O(nlogn)
-    - Worst Case: O(n^2)
-    
-    Space Complexity: O(logn)
-    '''
-    # Base Case
-    if low >= high:
-        return
-    
-    # Partitioning
-    pivot = arr[high]
-    j = low
-    
-    for i in range(low, high):
-        if arr[i] <= pivot:
-            # Swap element at i and j
-            arr[i], arr[j] = arr[j], arr[i]
-            
-            j = j + 1
-            
-    # Swap element at j with pivot
-    arr[high], arr[j] = arr[high], arr[j]
-    
-    # Recursive Step
-    naive(arr, low, j-1)
-    naive(arr, j+1, high)
-    
-    return arr
 
 
 def hoares(arr: List, low: int, high: int):
