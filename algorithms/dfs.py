@@ -27,6 +27,29 @@ def DFS(graph: dict[list[str]], node: str, visited=None, traversal=None) -> list
             DFS(graph, neighbour, visited, traversal)
             
     return traversal
+
+def DFS_iterative(graph: dict[list[str]], node: str, target: str) -> list:
+    path = []
+    stack = [node]
+    
+    while True:
+        s = stack.pop()
+        
+        if s == target:
+            path.append(s)
+            return path
+        
+        if s not in path:
+            path.append(s)
+            
+        if s not in graph:
+            continue
+        
+        for neighbour in graph[s]:
+            stack.append(neighbour)
+        
+    return path
+        
             
             
 if __name__ == '__main__':
@@ -40,5 +63,5 @@ if __name__ == '__main__':
         '8': []
     }
     
-    # Run DFS
-    DFS(graph, '5')
+    result = DFS_iterative(graph, '5', '8')
+    print(result)
