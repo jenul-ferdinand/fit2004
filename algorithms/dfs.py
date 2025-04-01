@@ -1,4 +1,4 @@
-def DFS(visited: set, graph: dict[list[str]], node: str) -> None:
+def DFS(graph: dict[list[str]], node: str, visited=None, traversal=None) -> list:
     """
     Depth-first search algorithm
     
@@ -13,13 +13,24 @@ def DFS(visited: set, graph: dict[list[str]], node: str) -> None:
     Space Complexity:
         O(V), where V is the no. of vertices
     """
+    if visited is None:
+        visited = set()
+    if traversal is None:
+        traversal = []
+        
+
     if node not in visited:
-        print(node)
         visited.add(node)
+        traversal.append(node)
+        
         for neighbour in graph[node]:
-            DFS(visited, graph, neighbour)
+            DFS(graph, neighbour, visited, traversal)
+            
+    return traversal
+            
             
 if __name__ == '__main__':
+    # Test graph
     graph = {
         '5': ['3', '7'],
         '3': ['2', '4'],
@@ -29,5 +40,5 @@ if __name__ == '__main__':
         '8': []
     }
     
-    visited = set()
-    DFS(visited, graph, '5')
+    # Run DFS
+    DFS(graph, '5')
