@@ -89,3 +89,9 @@ if __name__ == '__main__':
     answer = 780
     assert result_td == answer, f'{Fore.RED}Expected {answer}, got {result_td}'
     print(f'{Fore.GREEN}Passed!')
+    
+    # Example from preparation sheet
+    capacity = 8
+    items = [(2, 120), (3, 200), (5, 250), (7, 450), (10, 750)]
+    print(knapsack_unbounded_bu(capacity, items))
+    print(knapsack_unbounded_td(capacity, items))
