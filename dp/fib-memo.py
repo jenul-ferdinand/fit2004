@@ -23,17 +23,19 @@ def fib_entry(n: int) -> int:
     memo[0] = 0
     memo[1] = 1
     
-    return fib_memo(n, memo)
-    
-def fib_memo(n: int, memo: list[int]) -> int:
-    """
-    The memoised fib function
-    """
-    if memo[n] != -1:
+    def fib_memo(n: int) -> int:
+        """
+        The memoised fib function
+        """
+        if memo[n] != -1:
+            return memo[n]
+        
+        memo[n] = fib_memo(n - 1, memo) + fib_memo(n - 2, memo)
         return memo[n]
     
-    memo[n] = fib_memo(n - 1, memo) + fib_memo(n - 2, memo)
-    return memo[n]
+    return fib_memo(n)
+    
+
 
 if __name__ == '__main__':
     start_time = time.time()
