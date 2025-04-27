@@ -2,7 +2,7 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from algorithms.merge_sort import merge
+from algorithms_sorting.merge_sort import merge
 
 '''
 Design an algorithm for merging k sorted lists of total size n that runs in O(nk) time or better
