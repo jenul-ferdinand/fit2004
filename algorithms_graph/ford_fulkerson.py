@@ -1,3 +1,5 @@
+import sys
+import os
 from typing import List, Optional, Tuple
 
 class Edge:
@@ -77,7 +79,7 @@ def _dfs(u: int, t: int, bottleneck: float, graph: Graph, visited: List[bool]) -
     # No augmenting path found from this vertex u
     return 0 
 
-def max_flow(num_vertices: int, edges: List[Tuple[int, int, int]], s: int, t: int) -> float:
+def ford_fulkerson(num_vertices: int, edges: List[Tuple[int, int, int]], s: int, t: int) -> float:
     """
     Calculates the maximum flow from source s to sink t using Ford-Fulkerson with DFS
     
@@ -109,5 +111,62 @@ def max_flow(num_vertices: int, edges: List[Tuple[int, int, int]], s: int, t: in
         
     return max_flow
         
+        
+if __name__ == '__main__':
+    # Example from Michael Sambol's YT Video: https://youtu.be/Tl90tNtKvxs
+    n = 6
+    edges = [
+        (0, 1, 10),
+        (1, 2, 4),
+        (2, 5, 10),
+        (1, 3, 2),
+        (1, 4, 8),
+        (3, 4, 9),
+        (4, 5, 10),
+        (4, 2, 6)
+    ]
+    source = 0
+    sink = 5
+    max_flow = ford_fulkerson(n, edges, source, sink)
+    print(f'Example from Michael Sambols YT Video')
+    print(f'Number of vertices: {n}')
+    print(f'Edges (u, v, capacity): {edges}')
+    print(f'Source: {source}, Sink: {sink}')
+    print(f'Maximum Flow: {max_flow}\n\n')
+    
+    # Example from Kindson's YT Video: https://youtu.be/MIauBXEu3BU
+    n = 4
+    edges = [
+        (0, 1, 20), (0, 2, 10),
+        (1, 2, 30),
+        (1, 3, 10), (2, 3, 20)
+    ]
+    source = 0
+    sink = 3
+    max_flow = ford_fulkerson(n, edges, source, sink)
+    print(f'Example from Kindsons YT Video')
+    print(f'Number of vertices: {n}')
+    print(f'Edges (u, v, capacity): {edges}')
+    print(f'Source: {source}, Sink: {sink}')
+    print(f'Maximum Flow: {max_flow}\n\n')
+    
+    # Example from W9 Preparation Sheet
+    n = 6
+    edges = [
+        (0, 1, 3), (0, 2, 4),
+        (1, 2, 1),
+        (1, 3, 5), (2, 4, 4),
+        (4, 1, 4),
+        (3, 4, 1),
+        (3, 5, 5), (4, 5, 3)
+    ]
+    source = 0
+    sink = 5
+    max_flow = ford_fulkerson(n, edges, source, sink)
+    print(f'Example from W9 Preparation Sheet')
+    print(f'Number of vertices: {n}')
+    print(f'Edges (u, v, capacity): {edges}')
+    print(f'Source: {source}, Sink: {sink}')
+    print(f'Maximum Flow: {max_flow}')    
     
 
