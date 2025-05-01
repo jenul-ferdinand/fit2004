@@ -22,6 +22,15 @@ def critical_path(edges: List[Edge], start_vertex: Vertex):
         Returns 0 if the start_node has no outgoing paths or doesn't exist.
         Raises ValueError if the graph contains cycles (not checked here, 
         assumes DAG)
+        
+    Time Complexity: O(V + E)
+        The dominant factors are O(V + E) for graph construction and O(V + E)
+        for the memoised recursion.
+        
+    Space Complexity: O(V + E)
+    Space Complexity (auxiliary): O(V + E)
+        The space is dominated by the adjacency list and potentially the call
+        stack/memo table.
     """
     # Find n (number of vertices = max_index + 1)
     n = -1

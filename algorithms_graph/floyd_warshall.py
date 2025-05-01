@@ -7,6 +7,12 @@ Edge = Tuple[Weight, Node, Node]
 INF = float('inf')
 
 def floyd_warshall(edges: List[Edge]):
+    """
+    Floyd Warshall All Pairs Shortest Path
+    
+    Time Complexity: O(V^3)
+    Space Complexity (auxiliary): O(V^2)
+    """
     # Find the maximum vertex
     V = 0
     for edge in edges:
