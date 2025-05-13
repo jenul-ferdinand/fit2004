@@ -79,3 +79,16 @@ if __name__ == '__main__':
     num_nodes5 = 3
     edges5 = []
     print(f"Example 5 Feasible (no edges): {is_feasible_circulation(num_nodes5, edges5)}") # Expected: True
+    
+    # 
+    num_nodes = 3
+    edges = [
+        (0, 1, 2, 2),
+        (1, 2, 1, 2)
+    ]
+    print(f"Example 4 Not Feasible (flow cannot satisfy): {is_feasible_circulation(num_nodes, edges)}")
+    
+    
+    num_nodes = 2
+    edges = [(0, 1, 10, 5)]
+    print(f'Feasible example last: {is_feasible_circulation(num_nodes, edges)}')
