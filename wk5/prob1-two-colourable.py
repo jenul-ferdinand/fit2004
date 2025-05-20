@@ -10,6 +10,18 @@ BLACK = 0
 WHITE = 1
 
 def is_two_colourable(edges: List[Edge]) -> Boolean:
+    """
+    Checks if a graph is two colourable.
+    
+    Args:
+    - edges: A list of edges represented as tuples (u, v)
+    in a list.
+    
+    Time Complexity: O(E + E + V+E) -> O(V+E)
+    Space Complexity: O(V+E + V + V) -> O(V + E)
+    - Where V is the number of vertices.
+    - Where E is the number of edges.
+    """
     # Find number of nodes (from edges)
     V = 0
     for u, v in edges: 
