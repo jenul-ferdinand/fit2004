@@ -13,6 +13,10 @@ def is_two_colourable(edges: List[Edge]) -> Boolean:
     """
     Checks if a graph is two colourable.
     
+    Uses a depth first search to colour each vertex of the graph. If two
+    adjacent vertices have the same colour, then we know that the graph is not
+    two colourable.  
+    
     Args:
     - edges: A list of edges represented as tuples (u, v)
     in a list.
