@@ -1,4 +1,13 @@
 # FIT2004 : Algorithms and Data Structures
+
+<div align="center">
+  <img
+    src="https://github.com/user-attachments/assets/8e9bf6e9-b64d-4070-a2e5-adeb4ab7171d"
+    alt="ledragon"
+    width="250"
+  />
+</div>
+
 ## Overview
 This repository contains my complete work for FIT2004.
 - Random problem solutions (`problems/`)
