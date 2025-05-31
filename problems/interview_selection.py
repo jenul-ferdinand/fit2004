@@ -70,12 +70,12 @@ def interview_selection(applicants: List[Tuple[Name, Ranking]]) -> List[List[Tup
     ranks = [r for _, r in applicants]
     
     # Compute two order statistic indices (0-based)
-    index_50 = N//2 # Bottom 50% cutoff
-    index_20 = N - (N * 20 // 100) # Top 20 cutoff 
+    INDEX_50 = N//2 # Bottom 50% cutoff
+    INDEX_20 = N - (N * 20 // 100) # Top 20 cutoff 
     
     # Find the two rank thresholds with QuickSelect 
-    threshold_50 = quick_select(ranks[:], 0, N-1, index_50-1)
-    threshold_20 = quick_select(ranks[:], 0, N-1, index_20-1)
+    THRESHOLD_50 = quick_select(ranks[:], 0, N-1, INDEX_50-1)
+    THRESHOLD_20 = quick_select(ranks[:], 0, N-1, INDEX_20-1)
     
     # Single pass over applicants to assign into rounds
     second_round = []
@@ -84,14 +84,14 @@ def interview_selection(applicants: List[Tuple[Name, Ranking]]) -> List[List[Tup
         _, ranking = applicant
         
         # 50% who got the lowest rankings WILL NOT progress.
-        if ranking < threshold_50:
+        if ranking < THRESHOLD_50:
             continue
         
         # 20% who got the highest rankings can SKIP the second round.
-        if ranking > threshold_20:
+        if ranking > THRESHOLD_20:
             third_round.append(applicant)
         # The remaining 30% must progress to the second round.
-        elif ranking > threshold_50:
+        elif ranking > THRESHOLD_50:
             second_round.append(applicant)
     
     return [second_round, third_round]
