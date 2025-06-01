@@ -17,6 +17,26 @@ edges: a list of tuples representing edges
 """
 
 def count_connected_components(n: int, edges: List[Tuple[int, int]]) -> int:
+    """
+    Counts the number of connected components in a given graph.
+    
+    A connected component is a maximal set of vertices such that each pair of
+    vertices in that set is joined by a path.
+    
+    Time Complexity: O(V + E)
+    Time Complexity Analysis:
+    - O(E) for building the adjacency list.
+    - O(V + E) for DFS.
+    
+    Aux Space Complexity: O(V + E)
+    Aux Space Complexity Analysis:
+    - O(V + E) for the adjacency list.
+    - O(V) for DFS
+    
+    Terms:
+    - V is the number of nodes.
+    - E is the number of edges.
+    """
     adj = [[] for _ in range(n)]
     for u,v in edges:
         adj[u].append(v)

@@ -23,6 +23,15 @@ back-edge as a cycle.
 """
 
 def cycle_find(n: int, edges: List[Tuple[int, int]]) -> bool:
+    """
+    Checks if a cycle exists in a given undirected graph.
+    
+    A cycle in an undirected graph is a path that starts and ends at the same
+    vertex, with at least one edge, and with no edge repeated.
+    
+    Time Complexity: O(V + E)
+    Aux Space Complexity: O(V + E)
+    """
     adj = [[] for _ in range(n)]
     for u,v in edges:
         adj[u].append(v)
