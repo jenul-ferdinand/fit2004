@@ -31,6 +31,7 @@ class SuffixArray:
     
     
     """
+    pass
 
 if __name__ == '__main__':
     # Example 1: “banana$”
