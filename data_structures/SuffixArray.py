@@ -22,6 +22,15 @@ class SuffixArrayNaive:
         suffixes = [(S[i:], i) for i in range(n)]
         suffixes.sort(key = lambda pair: pair[0])
         self.sa = [idx for (_, idx) in suffixes]
+        
+class SuffixArray:
+    """
+    Prefix doubling technique for constructing suffix array.
+    
+    Time Complexity:
+    
+    
+    """
 
 if __name__ == '__main__':
     # Example 1: “banana$”
