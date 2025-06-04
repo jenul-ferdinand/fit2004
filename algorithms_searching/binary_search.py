@@ -35,6 +35,8 @@ def binary_search_iterative(arr: list, target: int) -> int:
     mid = 0
     
     while low <= high:
+        #! LI: target is in arr[1..n] iff target is in arr[low..high]
+        
         mid = (high + low) // 2 
         
         if arr[mid] < target:

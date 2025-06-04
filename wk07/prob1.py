@@ -27,7 +27,7 @@ Base cases:
 Optimal substructure:
     memo[0] = houses[0]
     memo[1] = max(houses[0], houses[1])
-    memo[i] = max(houses[i] + dp[i-2], dp[i-1]) for i >= 2
+    memo[i] = max(houses[i] + memo[i-2], memo[i-1]) for i >= 2
     
 Overlapping sub problems:
     - Initially we have the base cases memo[0] and memo[1]
