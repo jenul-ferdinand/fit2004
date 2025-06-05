@@ -1,18 +1,21 @@
-import heapq
-
 def find_kth_largest(nums: list[int], k: int) -> int:
-    # Create max heap
-    max_heap = [-elem for elem in nums]
-    heapq.heapify(max_heap)
+    k = len(nums) - k
     
-    # Pop out elements until, leaving the last
-    while k >= 2:
-        heapq.heappop(max_heap)
-        print(max_heap)
-        k -= 1
-    
-    # Return the last one
-    return -heapq.heappop(max_heap)
+    def quick_select(l, r):
+        pivot, p = nums[r], l
+        for i in range(l, r):
+            if nums[i] <= pivot:
+                nums[p], nums[i] = nums[i], nums[p]
+                p += 1
+        
+        nums[p], nums[r] = nums[r], nums[p]
+        
+        if p > k: return quick_select(l, p - 1)
+        if p < k: return quick_select(p + 1, r)
+        if p == k: return nums[p]
+        
+    return quick_select(0, len(nums) - 1)
+            
 
 if __name__ == '__main__':
     nums = [3,2,1,5,6,4]
