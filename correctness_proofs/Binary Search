@@ -1,0 +1,38 @@
+function BINARY_SEARCH(A[1..n], target)
+    lo = 1
+    hi = n + 1
+
+    while (lo < hi-1) do
+        mid = floor((lo + hi) / 2)
+        if target >= A[mid] then
+            lo = mid
+        if target < A[mid] then
+            hi = mid
+    end
+
+    if A[lo] == target then
+        return lo
+    
+    return false
+
+"""
+LI: target is in A[1..n] iff target is in A[lo..hi-1]
+
+On initialisation, lo = 1 and hi = n + 1 so the target is in 
+A[1..n] iff target is in A[1..n].
+
+Assume that the target value is in L[lo..hi-1] for some loop iteration.
+
+We calculate the middle element then:
+- If target >= A[mid] then it must be located somewhere in A[mid..hi-1], so we 
+  update lo = mid.
+- If target < A[mid] then it most be located somewhere in A[lo..mid-1], so we
+  update hi = mid.
+
+Since this is exactly what we do at the start of the next iteration the 
+invariant is still true.
+
+On termination, lo = hi-1, A[lo..hi-1] collapses into the single position lo. By
+invariant, either that one element equals target (and you return lo) or target
+wasn't in A at all.
+"""
