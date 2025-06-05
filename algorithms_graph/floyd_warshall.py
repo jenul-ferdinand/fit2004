@@ -20,44 +20,21 @@ def floyd_warshall(edges: List[Edge]):
     # No of vertices = max node + 1
     V += 1
     
-    # The shortest distance matrix
-    dist = [[INF] * V for _ in range(V)]
+    # The shortest distance matrix 
+    dist: List[List[int]] = [[INF] * V for _ in range(V)]
     
-    # Set distance from node to itself to 0
-    for node in range(V):
-        dist[node][node] = 0
-    
-    # DEBUG: Output matrix on initialisation
-    print("Initial distance matrix:")
-    for row in dist:
-        print([f'{x:5}' for x in row])
-    
-    # Populate initial distances from direct edges
-    for edge in edges:
-        weight, u, v = edge
+    for v in range(V):
+        dist[v][v] = 0
         
-        # Update only if this edge offers a shorter path than already found
-        dist[u][v] = min(dist[u][v], weight)
+    print(dist)
     
-    # DEBUG: Output matrix when populated
-    print('\nPopulated distance matrix:')
-    for row in dist:
-        print([f'{x:5}' for x in row])
-    
-    # Floyd-Warshall core algorithm
+    for w, u, v in edges:
+        dist[u][v] = min(dist[u][v], w)
+        
     for k in range(V): # Intermediate vertex
         for u in range(V): # Source vertex
-            for v in range(V): # Destination vertex
-                # Recurrence:
-                if dist[u][k] != INF and dist[k][v] != INF:
-                    # Is the path from u to v SHORTER if we go via k?
-                    dist[u][v] = min(dist[u][v], dist[u][k] + dist[k][v])
-        
-        # DEBUG: Output matrix end of iteration k
-        print(f'\nK Iteration no. {k}')
-        for row in dist:
-            print([f'{x:5}' for x in row])
-        
+            for v in range(V): # Destinatino vertex
+                dist[u][v] = min(dist[u][v], dist[u][k] + dist[k][v])
                 
     return dist
     
