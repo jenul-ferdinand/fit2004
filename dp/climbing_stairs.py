@@ -45,16 +45,43 @@ def climb_stairs(num_stairs: int) -> int:
     Space Complexity Analysis: 
         - Storing the `ways` array to store results: O(n)
     """
-    n = num_stairs + 1
+    def basic(num_stairs):
+        n = num_stairs + 1
     
-    ways = [None] * n
-    ways[0] = 1 # Starting point (one way to stand at 0)
-    ways[1] = 1 # First step (one way to get to step 1)
-    
-    for i in range(2, n):
-        ways[i] = ways[i-1] + ways[i-2]
+        ways = [None] * n
+        ways[0] = 1 # Starting point (one way to stand at 0)
+        ways[1] = 1 # First step (one way to get to step 1)
         
-    return ways[num_stairs]
+        for i in range(2, n):
+            ways[i] = ways[i-1] + ways[i-2]
+            
+        return ways[num_stairs]
+    
+    def space_saving(num_stairs):
+        """
+        This one has:
+        
+        Space Complexity: O(1) because we only track three indices
+        """
+        n = num_stairs + 1
+        ways = [None] * 3
+        ways[0] = 1
+        ways[1] = 1
+        
+        for _ in range(2, n):
+            ways[2] = ways[1] + ways[0]
+            
+            # Update previous two
+            ways[1], ways[0] = ways[2], ways[1]
+            
+        return ways[1]
+    
+    if basic(num_stairs) != space_saving(num_stairs): 
+        return None
+    
+    return space_saving(num_stairs=num_stairs)
+            
+    
 
 if __name__ == '__main__':
     # 4 Steps
