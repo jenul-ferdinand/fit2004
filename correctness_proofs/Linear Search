@@ -1,0 +1,29 @@
+function LINEAR_SEARCH(A[1..n], target)
+    Set index = null
+
+    for i = 1 to n do
+        if A[i] == target then
+            index = i
+    end
+
+    return index
+
+"""
+LI: if target in A[1..i-1], then the index holds A[i] that is equal to target,
+or null if there is no match.
+
+On initialisation before i=1, the prefix A[1..0] is empty, there is no match
+for target, so index = null holds.
+
+On iteration i=k, assume that if target in A[1..k-1], then the index holds A[k]
+that is equal to target, or null if there is no match.
+
+- If A[k] == target then we update index = k.
+- If A[k] != target then we continue to the next iteration
+
+At the end of the iteration, the invariant holds before the next iteration.
+
+On termination, we know that i=n+1 the invariant ensures that if target appears
+anywhere in A[1..n], index is its last occurrence; otherwise index = null. 
+Retuning index is therefore correct. 
+"""

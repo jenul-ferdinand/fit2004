@@ -1,5 +1,4 @@
 from typing import List, Tuple, Set
-from colorama import Fore
 
 """
 Given a capacity C and a set of items with their weights and values, you need
@@ -74,21 +73,21 @@ def knapsack_unbounded_td(capacity: Capacity, items: List[Tuple[Weight, Value]])
 if __name__ == '__main__':
     # Example from the seminar
     # Testing bottom up
-    print(f'{Fore.WHITE}Testing bottom up')
+    print(f'Testing bottom up')
     capacity = 12
     items = [(9, 550), (5, 350), (6, 180), (1, 40)]
     result_bu = knapsack_unbounded_bu(capacity, items)
     answer = 780
-    assert result_bu == answer, f'{Fore.RED}Expected {answer}, got {result_bu}'
-    print(f'{Fore.GREEN}Passed!')
+    assert result_bu == answer, f'Expected {answer}, got {result_bu}'
+    print(f'Passed!')
     # Testing top down
-    print(f'{Fore.WHITE}Testing top down')
+    print(f'Testing top down')
     capacity = 12
     items = [(9, 550), (5, 350), (6, 180), (1, 40)]
     result_td = knapsack_unbounded_td(capacity, items)
     answer = 780
-    assert result_td == answer, f'{Fore.RED}Expected {answer}, got {result_td}'
-    print(f'{Fore.GREEN}Passed!')
+    assert result_td == answer, f'Expected {answer}, got {result_td}'
+    print(f'Passed!')
     
     # Example from preparation sheet
     capacity = 8

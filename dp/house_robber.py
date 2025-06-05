@@ -16,8 +16,6 @@ adjacent houses.
 rob[0] = nums[0]
 rob[1] = max(nums[0], nums[1])
 rob[i] = max(rob[i-1], rob[i-2] + nums[i])
-
-
 """
 from typing import List
 
