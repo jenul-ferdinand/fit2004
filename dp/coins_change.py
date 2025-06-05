@@ -1,8 +1,6 @@
-from colorama import Fore, init
+import math
 
-init(autoreset=True)
-
-INFINITY = float('inf')
+INFINITY = math.inf
 
 def coins_change_top_down(coins: list, target: int):
     """
@@ -28,7 +26,10 @@ def coins_change_top_down(coins: list, target: int):
             for i in range(len(coins)):
                 if coins[i] <= target:
                     # Recurrence step 3
-                    min_coins = min(min_coins,  1 + solve(coins, target - coins[i]))
+                    min_coins = min(
+                        min_coins,  
+                        1 + solve(coins, target - coins[i])
+                    )
                     
             memo[target] = min_coins
         
@@ -36,28 +37,46 @@ def coins_change_top_down(coins: list, target: int):
     
     return solve(coins, target)
 
+def coins_change_bottom_up(coins: list[int], target: int) -> float:
+    """
+    Bottom-up DP for the coin-change problem.
+    
+    Builds a table memo[0..target] where
+    dp[t] = minimum coins needed to make sum t,
+    or INFINITY if t cannot be formed.
+    
+    Time Complexity: O(target * len(coins))
+    Space Complexity: O(target)
+    """
+    memo = [INFINITY] * (target + 1)
+    memo[0] = 0
+    
+    for t in range(1, target + 1):
+        best = INFINITY
+        for c in coins:
+            if c <= t:
+                best = min(best, memo[t-c]+1)
+        memo[t] = best
+        
+    return memo[target]
+
 if __name__ == '__main__':
-    print('Bottom-up tests')
-    print()
-    print('Top-down tests')
     # Test 1
     coins = [1]
     target = 3
-    result = coins_change_top_down(coins, target)
-    print(f'{Fore.WHITE}Coins available: {coins}')
-    print(f'Target value: ${target}')
-    print(f'No. coins needed: {result} coins')
-    assert result == 3, f'\n{Fore.RED}Failed!'
-    print(f'{Fore.GREEN}Passed!')
-    print()
+    res1 = coins_change_top_down(coins, target)
+    res2 = coins_change_bottom_up(coins, target)
+    exp = 3
+    assert res1 == exp, f'Expected {exp}, got {res1}'
+    assert res1 == res2, f'Bottom up version failed' 
+    
     # Test 2
     coins = [2,3,9]
     target = 12
-    result = coins_change_top_down(coins, target)
-    print(f'{Fore.WHITE}Coins available: {coins}')
-    print(f'Target value: ${target}')
-    print(f'No. coins needed: {result} coins')
-    assert result == 2, f'\n{Fore.RED}Failed!'
-    print(f'{Fore.GREEN}Passed!')
+    res1 = coins_change_top_down(coins, target)
+    res2 = coins_change_bottom_up(coins, target)
+    exp = 2
+    assert res1 == exp, f'Expected {exp}, got {res1}'
+    assert res1 == res2, f'Bottom up version failed'
     
-    
+    print('All tests passed!')

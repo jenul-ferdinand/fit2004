@@ -76,6 +76,12 @@ def quick_sort(arr: list, low: int, high: int, partition_method: str = 'naive', 
             median_index = candidates[1][1]
             arr[median_index], arr[high] = arr[high], arr[median_index]
             pivot = arr[high]
+            
+        case 'median-of-median':
+            """
+            
+            """
+            pass
               
         case 'first':
             """
@@ -312,46 +318,3 @@ if __name__ == '__main__':
             
             print(f'Sorted using {partition.upper()} + {pivot.upper()}')
             print(f'Time taken: {elapsed:.6f} seconds. Correctly sorted: {is_correct}\n')
-
-
-
-def hoares(arr: List, low: int, high: int):
-    '''
-    Hoare's partitioning scheme (with QuickSort)
-    
-    https://youtu.be/qwzWH36FX60
-
-    This scheme is in-place but not stable
-    
-    Time Complexity:
-    - Best Case: O(nlogn)
-    - Average Case: O(nlogn)
-    - Worst Case: O(n^2)
-    
-    Space Complexity: O(logn)
-    '''
-    # Base Case
-    if low >= high:
-        return
-    
-    # Partitioning
-    pivot = arr[high]
-    i = low
-    j = high
-    
-    while i < j:
-        while arr[i] < pivot:
-            i = i + 1
-        
-        while arr[j] > pivot:
-            j = j - 1 
-            
-        if i < j:
-            arr[i], arr[j] = arr[j], arr[i]
-            i = i + 1
-    
-    # Recursive Step        
-    hoares(arr, low, i-1)
-    hoares(arr, i, high)
-    
-    return arr
