@@ -1,0 +1,29 @@
+function MINIMUM_ELEMENT(A[1..n])
+    min = A[1]
+    for i = 2 to n do
+        if A[i] < min then
+            min = A[i]
+    end
+    
+    return min
+
+"""
+LI: min is the minumum element in A[1..i-1]
+
+On initialisation min is the minimum element in A[1..2-1], since the loop is
+yet to begin i=2. So min is in fact the minimum element in A[1..1].
+
+On iteration k, let's assume that min is the minimum element in A[1..k-1].
+
+- If min is < A[k] then we update min to be A[k].
+- If min is >= A[k] then we don't update and continue to the next iteration.
+
+At the end of the iteration we now know for a fact that min will be the minimum
+element in A[1..k].
+
+Hence, the loop invariant holds that min is the minimum element in A[1..k-1], by
+our assumption.
+
+On termination i=n+1, we know that min will be the minimum element in 
+A[1..n]. So we found the minimum element out of the whole array.
+"""

@@ -1,0 +1,33 @@
+def calc_arr(arr):
+    n = len(arr) + 1
+    total = 0
+    
+    for i in range(1, n):
+        total += arr[i]
+    
+    return total
+
+function SUM_ARRAY(A[1..n]) 
+    total = 0
+
+    for i = 1 to n do
+        total += A[i]
+    end
+
+    return total
+
+"""
+LI: total is the sum of the elements in A[1..i-1]
+
+On initialisation i=1 so that would mean that total is the sum of the elements
+in A[1..1-1] = A[1..0], so an empty list. Hence why total is 0 initially.
+
+On iteration k, assume that total is the sum of the elements in A[1..k-1].
+
+In this iteration we add A[k] to the total.
+
+We can now see that total is the sum of the elements in A[1..k].
+
+On termination, i=n+1, since we have exited the loop. so total is the sum
+of the elements in A[1..n].
+"""
