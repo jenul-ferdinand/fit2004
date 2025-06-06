@@ -11,7 +11,7 @@
 ## Overview
 This repository contains my complete work for FIT2004.
 - Random problem solutions (`problems/`)
-- Past exam papers & their solutions (`exams/`, `exams_more/`)
+- Past exam papers & their solutions for some (`exams/`)
 - Implementations of standard algorithms (graph, sorting, searching).
 - Data-structure implementations in `data_structures/`.
 - Dynamic programming in `dp/`.
@@ -19,7 +19,6 @@ This repository contains my complete work for FIT2004.
 
 ## Repository Structure
 ┌── .exams/ # Past exam papers + solutions <br/>
-├── .exams_more/ # Additional past papers <br/>
 ├── algorithms_graph/ # Graph algorithms (Ford–Fulkerson, Dijkstra, DFS, BFS, etc.) <br/>
 ├── algorithms_searching/ # Searching algorithms (binary search, and more) <br/>
 ├── algorithms_sorting/ # Sorting algorithms (merge, quick, insertion, etc.) <br/>
@@ -31,14 +30,6 @@ This repository contains my complete work for FIT2004.
 ├── requirements.txt # Python dependencies <br/>
 └── .gitignore
 
-## Getting Started
-### Prerequisites
-- Python 3.7+
-- Install dependencies:
-```sh
-pip install -r requirements.txt
-```
-
 ## Running Examples
 Each folder contains a `__main__` section.
 
@@ -48,10 +39,10 @@ python algorithms_sorting/insertion_sort.py
 ```
 
 ## Past Exams
-Browse `exams/` and `exams_more/` for PDFs of past papers and their solutions.
+Browse `exams/` for PDFs of past papers and their solutions.
 
 <br/>
 <br/>
 
-_Repository maintained by Jenul Ferdinand for FIT2004 at Monash University_
+_Repository was maintained by Jenul Ferdinand whilst studying FIT2004 at Monash University_
 
