@@ -1,8 +1,7 @@
 import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-from algorithms.quick_select import quick_select
+from algorithms_sorting.quick_select import quick_select
 
 def prob9(A: list, B: list, k: int):
     """
@@ -14,8 +13,6 @@ def prob9(A: list, B: list, k: int):
     U = list(set(A).union(B))
     
     return quick_select(U, 0, len(U)-1, k)
-
-
 
 if __name__ == '__main__':
     A = [1,2,3]
