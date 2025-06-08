@@ -1,12 +1,3 @@
-import sys
-import os
-import random
-
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-from algorithms_sorting.quick_select import quick_select
-from typing import List, Tuple
-
 """
 5) You are interviewing a large number of applicants for a job. There are 
 three rounds of interviews, and for the first ruond, each applicant you 
@@ -33,6 +24,16 @@ interviews, after completing the first round. Your algorithm should run in O(N)
 time, and you can assume that you have access to a QuickSelect algorithm which 
 runs in O(N) time.
 """
+
+import sys
+import os
+import random
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from algorithms_sorting.quick_select import quick_select
+from typing import List, Tuple
+
 
 Name = str
 Ranking = float
