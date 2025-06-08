@@ -1,0 +1,41 @@
+function COUNTING_SORT(A[1..n], u)
+    counter[0..u-1] = [0,0,...]
+
+    for i=1 to n do
+        counter[A[i]] += 1
+    end
+
+    position[0..u-1] = [1,0,...]
+
+    for v=1 to u-1 do
+        position[v] = position[v-1] + counter[v-1]
+    end
+    
+    temp[1..n] = [0,0,...]
+
+    for i=1 to n do
+        temp[position[A[i]]] = A[i]
+        position[A[i]] += 1
+    end
+
+    swap(A, temp) // Place the result into the input array
+
+"""
+LI (at the start of iteration i for final loop):
+
+1. temp[1.pos-1] (where pos is the old value of position[A[i]]) already contains
+   exactly the sorted multiset of A[1..i-1], in stable order.
+2. For every value v, position[v] points to the next free slot in temp where
+   an element equal to v should go.
+
+On initialisation, i=1, nothing has been placed yet, so temp[1..0] is empty and
+for each v, position[v] is exactly where the first occurrence of v should land.
+
+On iteration i, when you process A[i], you write it to temp at position[A[i]]
+(the correct next slot for that key), then bump position[A[i]] so that future
+duplicates of the same key go to the next slot. Everything you had before 
+remains in sorted, stable order.
+
+On termination, after i=n, you have placed all A[1..n] into temp[1..n], in
+sorted order.
+"""
