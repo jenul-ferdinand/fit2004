@@ -25,7 +25,6 @@ import math
 from typing import List, Tuple
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
 from algorithms_sorting.quick_select import quick_select
 
 def race_category_assignment(
