@@ -1,0 +1,18 @@
+function find_k_smallest(stream, k):
+    """
+    Time Complexity: O(n log k)
+    Aux Space Complexity: O(k)
+    """
+    // MaxHeap will hold at most k smallest seen so far
+    MaxHeap <- empty MaxHeap
+
+    for each x in stream do
+        if size(MaxHeap) < k then
+            insert(MaxHeap, x)
+        else if x < MaxHeap.peek() then
+            MaxHeap.extractMax()
+            MaxHeap.insert(x)
+    end
+
+    // At this point MaxHeap contains the k smallest elements
+    return MaxHeap.elements()

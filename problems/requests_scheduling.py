@@ -31,7 +31,7 @@ incompatible requests).
 
 from typing import List, Tuple
 
-def requests_scheduling(requests: List[Tuple[int, int]]):
+def requests_scheduling(requests: List[Tuple[int, int]]) -> List[Tuple[int, int]]:
     """
     Schedules Requests for NO OVERLAP
     
@@ -58,16 +58,16 @@ def requests_scheduling(requests: List[Tuple[int, int]]):
     - n: The number of requests
     """
     requests = sorted(requests, key = lambda x: x[1])
-    result = []
     
     last_finish = -1
+    output = []
     
     for start, finish in requests:
-        if start >= last_finish:
-            result.append((start, finish))
+        if start > last_finish:
+            output.append((start, finish))
             last_finish = finish
-        
-    return result
+            
+    return output
 
 if __name__ == '__main__':
     # (start, finish)

@@ -1,0 +1,15 @@
+"""
+Problem 1) Describe a simple modification that can be made to any 
+comparison-based sorting algorithm to make it stable. How much space and time 
+overhead does this modification incur?
+
+A simple modification to make any comparison based sorting algorithm stable is
+to instead go over the original input array and convert the elements to be 
+tuples instead of (element, order). Storing the original order in the second
+entry of the tuple allows us to maintain stability during comparison and sorting.
+
+If we every encounter two equal elements when comparing we would break ties by
+comparing with the order instead.
+
+This incurs extra O(n) auxiliary space where n is the length of the input array.
+"""

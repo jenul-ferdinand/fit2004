@@ -1,0 +1,30 @@
+"""
+Consider an application of radix sort to sorting a sequence of non-empty strings 
+of lowercase letters a to z in alphabetical order (each character of the strings 
+can be interpreted as being base-26 for running the internal counting sort 
+rounds). Radix sort is traditionally applied to a sequence of equal length 
+elements, but we can modify it to work on variable length strings by simply 
+padding the shorter strings with empty characters at the end.
+
+(a) What is the time complexity of this algorithm? In what situation is this 
+algorithm very inefficient?
+
+We know that RadixSort has a TimeComplexity of O(k(n + b)) 
+Where:
+- k is the number of letters in the longest element in the input sequence.
+- n is the number of strings in the sequence
+- b is the base, in this case 26.
+So the algorithm is O(k * (n + 26)) = O(k * n) on average, this is fine if the
+longest character is not that long i.e., 3 characters long. But if the longest
+character in the input sequence is greater than or equal to n, then we got a 
+polynomial time complexity of O(n^2).
+
+
+(b) Describe how the algorithm can be improved to overcome the problem mentioned
+in (a). The improved algorithm should have worst-case time complexity O(n), 
+where n is the sum of all of the string lengths, i.e. it should be optimal.
+
+We can eliminate the padding inefficiency by either using an MSD style bucket/
+radix sort or a trie to sort, both run in O(n) time where n is the total number
+of characters across all strings.
+"""

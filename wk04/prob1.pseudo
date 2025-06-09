@@ -1,0 +1,20 @@
+"""
+Prob 1) In the seminars, a probability argument was given to show that the 
+average-case complexity of Quicksort is O(n log n). Use a similar argument to 
+show that for an input array of n elements the average-case complexity of 
+Quickselect with random pivots is O(n).
+
+QuickSelect is similar to QuickSort but we only recurse on partition to find 
+the k-th smallest element by comparing the number of elements on the left and 
+right. Using randomised pivots can be risky in the worst case because we can
+get a worst case time complexity of O(n^2), but in the average case this 
+is still O(n), this is because:
+
+The probability of choosing the smallest 1% and top 1% element is 2%. 
+
+The probability of choosing the smallest 10% and biggest 10% element is 20%. So
+there is still a 80% chance of choosing a good pivot.
+
+The recurrence of QuickSelect will be T(n) = T(n-1) + O(n) in the worst case.
+But T(n) = T(n//2) + O(n) in the average case.
+"""
