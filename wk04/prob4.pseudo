@@ -1,0 +1,28 @@
+"""
+Prob 4) One common method of speeding up sorting in practice is to sort using
+a fast sorting algorithm like QuickSort or MergeSort until the subproblems sizes
+are small and then to change to using insertion sort since insertion sort is 
+fast for small, nearly sorted lists. Suppose we perform MergeSort until the
+subproblems have size k, at which point we finish with insertion sort. 
+
+What is the worst-case running time of this algorithm?
+
+ANSWER
+Worst-case running time T(n) can be split into two parts:
+1. Divide and merge down to subarrays of size k.
+    - You stop recursing once subproblem size <= k, so the recursion depth is 
+      about log(n/k).
+    - Each level does O(n) work merging, so total merge cost is O(n log n/k)
+
+2. Insertion-sorting the n/k subarrays of size k.
+    - Each subarray costs O(k^2) in the worst case.
+    - There are approx n/k subarrays -> total insertion sort cost = (n/k)*O(k^2)
+      = O(n*k)
+
+Putting it together: T(n) = O(n log n/k) + O(nk)
+
+If particular:
+- If k is a fixed constant, this is O(n log n)
+- If k grows (e.g., O(log n)), it remains O(n log n)
+- In the extreme k=O(n), you fall back to O(nk) = O(n^2)
+"""
