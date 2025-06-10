@@ -28,12 +28,10 @@ runs in O(N) time.
 import sys
 import os
 import random
-
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-from algorithms_sorting.quick_select import quick_select
 from typing import List, Tuple
 
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from algorithms_sorting.quick_select import quick_select
 
 Name = str
 Ranking = float
