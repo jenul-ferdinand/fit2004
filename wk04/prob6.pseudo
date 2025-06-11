@@ -1,0 +1,28 @@
+"""
+Suppose for an array of unique elements Bob implements QuickSort by selecting
+the average element of the sequence (or the closest element to it) as the pivot.
+
+Recall that the average is the sum of all of the elements divided by the number
+of elements. 
+
+What is the worst-case time complexity of Bob's implementation?
+
+Describe a family of inputs that cause Bob's algorithm to exhibit its worst-case
+behaviour.
+
+ANSWER
+Worst-case time O(n^2), since if you always pick an extreme element as the
+average, you get one huge side and one empty side on each partition.
+
+One easy bad family is any strictly geometric sequence, e.g.,
+[1,2,4,8,16, 2^{n-1}]
+
+At every step the true average is
+(1+2+4+...+2^(n-1)) = (2^n - 1)/n
+
+Which is slightly less than 2^(n-1), so the pivot you choose is 2^(n-1), the
+largest element.
+
+That splits into sizes n-1 and 0, so you recur on n-1 again, giving
+T(n)=T(n-1) + O(n) = O(n^2)
+"""

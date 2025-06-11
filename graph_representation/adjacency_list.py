@@ -48,7 +48,7 @@ def in_degree(adj, u):
     """
     Returns the number of edges COMING INTO node `u`
     
-    Time Complexity: O(V + E)
+    Time Complexity: O(V + E) = O(E) for connected graphs
     Time Complexity Analysis:
         - You scan each node's outgoing list once.
         
