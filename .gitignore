@@ -50,3 +50,10 @@ desktop.ini
 # Log files
 *.log
 logs/
+
+# Rust
+rust/target/
+rust/**/target/
+**/*.rs.bk
+Cargo.lock
+*.pdb
